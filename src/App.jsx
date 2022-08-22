@@ -5,15 +5,15 @@ export const App = () => {
 
     const [items, setItems] = useState([])
 
-    const onInput = (taskName)=>{
-      if(!items.find((event)=>event.name===taskName)){
-        setItems([...items,{name:taskName,done:false}]);
+    const onInput = (event)=>{
+      if(!items.find((event)=>event.name===event)){
+        setItems([...items,{name:event,done:false}]);
       }
       
     }
 
     useEffect(() => {
-      let data = localStorage.getItem('tasks')
+      let data = localStorage.getItem('value')
       if(data){
         setItems(JSON.parse(data));
       }
@@ -21,7 +21,7 @@ export const App = () => {
     
 
     useEffect(() => {
-      localStorage.setItem('tasks',JSON.stringify(items))
+      localStorage.setItem('value',JSON.stringify(items))
     }, [items])
     
     const clear = ()=>{
