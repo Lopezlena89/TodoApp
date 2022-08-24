@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { Input } from './components/Input';
+import { ListRode } from './components/ListRode';
 
 export const App = () => {
 
@@ -10,6 +11,12 @@ export const App = () => {
         setItems([...items,{name:event,done:false}]);
       }
       
+    }
+
+    const tarea = (event)=>{
+      setItems(
+        items.map(lista=>(lista.name == event.name )?{...lista, done: !lista.done}:lista )
+      )
     }
 
     useEffect(() => {
@@ -24,9 +31,7 @@ export const App = () => {
       localStorage.setItem('value',JSON.stringify(items))
     }, [items])
     
-    const clear = ()=>{
-      localStorage.clear();
-    }
+    
   
   return (
     <>
@@ -34,12 +39,12 @@ export const App = () => {
 
       {
         items.map((list)=>(
-          <div key={list.name}>
-            {list.name}
-          </div>
+          <ListRode key={list.name} newList={list} oncheck={tarea}/>
+          
         ))
+        
       }
-
+      
       
 
     </>
