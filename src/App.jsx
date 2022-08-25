@@ -5,14 +5,17 @@ import { ListRode } from './components/ListRode';
 export const App = () => {
 
     const [items, setItems] = useState([])
+    const [counter, setCounter] = useState(0)
 
     const onInput = (event)=>{
+      setCounter(counter+1)
       if(!items.find((event)=>event.name===event)){
-        setItems([...items,{name:event,done:false}]);
+        setItems([...items,{name:event,done:false,id:counter}]);
       }
-      
     }
 
+    
+   
     const tarea = (event)=>{
       setItems(
         items.map(lista=>(lista.name == event.name )?{...lista, done: !lista.done}:lista )
@@ -39,8 +42,8 @@ export const App = () => {
 
       {
         items.map((list)=>(
-          <ListRode key={list.name} newList={list} oncheck={tarea}/>
-          
+          <ListRode key={list.name} newList={list} oncheck={tarea} />
+       
         ))
         
       }
