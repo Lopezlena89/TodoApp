@@ -14,9 +14,13 @@ export const App = () => {
       }
     }
 
-    
+    const delate = (id)=>{
+     setItems([...items].filter(todo =>todo.id !== id))
+      
+    }
    
     const tarea = (event)=>{
+      
       setItems(
         items.map(lista=>(lista.name == event.name )?{...lista, done: !lista.done}:lista )
       )
@@ -32,6 +36,7 @@ export const App = () => {
 
     useEffect(() => {
       localStorage.setItem('value',JSON.stringify(items))
+      
     }, [items])
     
     
@@ -42,7 +47,7 @@ export const App = () => {
 
       {
         items.map((list)=>(
-          <ListRode key={list.name} newList={list} oncheck={tarea} />
+          <ListRode key={list.name} newList={list} oncheck={tarea} eliminar={delate}/>
        
         ))
         
