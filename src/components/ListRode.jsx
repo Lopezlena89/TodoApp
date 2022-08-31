@@ -1,19 +1,31 @@
+import { useState } from "react"
 
 export const ListRode = ({newList, oncheck,eliminar}) => {
-  
-    
+ 
+   
+ 
   
     return (
      <> 
-      <div >
-                {newList.name}
+      
+          <div className="container-input">
+            <div className="container-texto">
                 <input type="checkbox" 
                 checked={newList.done}
                 onChange={()=>{oncheck(newList)}}
                 />
-               <button onClick={()=>eliminar(newList.id)}>Eliminar</button>
-               
-        </div>
+                <div >
+                  {newList.name}
+                </div>
+            </div>
+            <div className="container-cambios">
+               <button onClick={()=>eliminar(newList.id)} >
+                  <span className="icon-trash-2"></span>
+                </button>
+            </div>
+            
+          </div>     
+      
        
     
     </>    

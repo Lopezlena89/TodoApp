@@ -2,6 +2,10 @@ import React, { useState,useEffect } from 'react'
 import { Input } from './components/Input';
 import { ListRode } from './components/ListRode';
 
+
+
+
+
 export const App = () => {
 
     const [items, setItems] = useState([])
@@ -43,15 +47,22 @@ export const App = () => {
   
   return (
     <>
-      <Input newInput={onInput}/>
+     
+        <div className='container'>
+        <Input newInput={onInput}/>
 
-      {
-        items.map((list)=>(
-          <ListRode key={list.name} newList={list} oncheck={tarea} eliminar={delate}/>
-       
-        ))
+        {
+          items.map((list)=>(
+            <ListRode key={list.name} newList={list} oncheck={tarea} eliminar={delate}/>
         
-      }
+          ))
+          
+        }
+        </div>
+
+      
+
+     
       
       
 

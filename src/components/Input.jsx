@@ -12,14 +12,14 @@ export const Input = ({newInput}) => {
 
   
     return (
-    <form onSubmit={submit}>
-      <input 
-        type='text'
-        placeholder='Enter'
-        value={input}
-        onChange={({target})=>setInput(target.value)}
-      />
-      <button value='Enviar'>Submit</button>
-    </form>
+      <>   
+
+          <form className="formulario" onSubmit={submit}>
+            <input className="input" type="text" placeholder="Enter todo here" value={input} onChange={({target})=>setInput(target.value)}/>
+            <button  value='Enviar'>Submit</button>
+          </form>
+         
+      </>
+
   )
 }
