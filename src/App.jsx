@@ -2,10 +2,6 @@ import React, { useState,useEffect } from 'react'
 import { Input } from './components/Input';
 import { ListRode } from './components/ListRode';
 
-
-
-
-
 export const App = () => {
 
     const [items, setItems] = useState([])

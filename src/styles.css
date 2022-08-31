@@ -7,6 +7,7 @@
 .input{
     width: 90%;
     height: 2.5em;
+    font-family: sans-serif;
 }
 form button{
     background-color:#326DFF;  
@@ -48,6 +49,10 @@ border-color: #FF5862;
 .icon-trash-2{
     font-size: 1.5em;
     color:white;
+}
+
+.elemento{
+    font-family: sans-serif;
 }
 
 @media screen and (max-width:600px) {

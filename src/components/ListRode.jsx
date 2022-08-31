@@ -14,7 +14,7 @@ export const ListRode = ({newList, oncheck,eliminar}) => {
                 checked={newList.done}
                 onChange={()=>{oncheck(newList)}}
                 />
-                <div >
+                <div className="elemento">
                   {newList.name}
                 </div>
             </div>
