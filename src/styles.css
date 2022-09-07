@@ -43,13 +43,24 @@ form{
 .container-texto div{
     margin-left: 1em;
 }
-.container-cambios button{
+
+.container-cambios{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-texto input:checked + div{
+    text-decoration: line-through;
+}
+
+.container-cambios button:last-of-type{
 display: flex;
 justify-content: center;
 align-items:center;
 background-color: #FF5862;
 border-radius: 10%;
 border-color: #FF5862;
+margin-left: 1em;
 }
 .icon-trash-2{
     font-size: 1.5em;
@@ -59,6 +70,7 @@ border-color: #FF5862;
 .elemento{
     font-family: sans-serif;
 }
+
 
 @media screen and (max-width:600px) {
     .container{

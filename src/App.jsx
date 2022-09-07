@@ -26,6 +26,14 @@ export const App = () => {
       )
     }
 
+    const actualizarTarea = (id,event)=>{
+      setItems(
+        items.map(lista=>(lista.id == id)?{...lista, name:event,done:false,id:id}:lista )
+      )
+      
+      
+    }
+   
     useEffect(() => {
       let data = localStorage.getItem('value')
       if(data){
@@ -49,7 +57,7 @@ export const App = () => {
 
         {
           items.map((list)=>(
-            <ListRode key={list.name} newList={list} oncheck={tarea} eliminar={delate}/>
+            <ListRode key={list.name} newList={list} oncheck={tarea} eliminar={delate} editarTexto={actualizarTarea}/>
         
           ))
           
