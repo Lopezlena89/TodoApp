@@ -2,12 +2,13 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    margin: 0% 20% 0% 20%;
+    margin: 0% 10% 0% 10%;
     border-color: #999999;
     border-style: double;
     border-width: 1px;
     margin-top: 2em;
     padding: 20px;
+    overflow: hidden;
 }
 .input{
     width: 90%;
@@ -57,33 +58,156 @@ form{
 display: flex;
 justify-content: center;
 align-items:center;
-background-color: #FF5862;
+background-color: #FC3232;
 border-radius: 10%;
-border-color: #FF5862;
+border-color: #FC3232;
 margin-left: 1em;
 }
-.icon-trash-2{
-    font-size: 1.5em;
-    color:white;
+.container-cambios button:first-of-type{
+    background-color:#4BCB0F ;
+    border-radius:10%;
+    border-color:#4BCB0F;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    
 }
+.icon-trash-2{
+    font-size: 1.1em;
+    color:white;
+   
+}
+.icon-edit {
+    font-size: 1.1em;
+    color:white;
+
+}
+.formEdit{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 70%;
+    margin-left: .5em;
+}
+
 
 .elemento{
     font-family: sans-serif;
 }
 
 
-@media screen and (max-width:600px) {
+
+@media screen and (min-width:200px) {
     .container{
-        margin: 0% 10% 0% 10%;
+        margin: 5% 10% 0% 5%;
+       
+     
+    }
+    .input{
+        width: 90%;
+        height: 1.5em;
+        font-family: sans-serif;
+    }
+    form button{
+        background-color:#326DFF;  
+        border-color:#326DFF ;
+        color:white;
+        width: 10%;
+        padding-right: 4em;
+    }
+    .formEdit{
+        display: flex;
+        width: 80%;
+        max-width: 500px;
+        
+  
+    }
+    .formEdit .formEdit-input{
+        width: 40%;
+        max-width:500px;
+       
         
     }
+    .formEdit .first-button{
+        width: 5em;
+        margin-right: .5em;
+        margin-left: 5%;
+        font-size: 10px;
+        
+    }
+    .formEdit .second-button{
+        width: 5em;
+        font-size: 10px;
+        margin-right: .5em;
+    }
+    
+    
+    
+   
+}
+@media screen and (min-width:700px) {
+    .container{
+        margin: 5% 20% 0% 20%;
+    
+    }
+    .container-cambios button:last-of-type{
+        margin-right: 1em;
+    }
+    .formEdit{
+        display: flex;
+        max-width: 500px;
+
+  
+    }
+    .formEdit .formEdit-input{
+        width:15em;
+        margin-right: .5em;
+    }
+    .formEdit button:first-of-type{
+        width: 10%;
+        margin-right: .5em;
+    }
+    .formEdit button:last-of-type{
+        width: 10px;
+        
+        
+    }
+    
+    
 }
 
 
-@media screen and (max-width:950) {
+@media screen and (min-width:1000px) {
     .container{
-        margin: 0% 50% 0% 50%;
-       
+        margin: 5% 10% 0% 10%;
+    
+    }
+    .input{
+        width: 90%;
+        height: 2.5em;
+        font-family: sans-serif;
+    }
+    .formEdit{
+        display: flex;
+        max-width: 500px;
+
+    }
+    .container-cambios button:last-of-type{
+        margin-right: 1em;
+    }
+    .formEdit .formEdit-input{
+        width: 50%;
+        margin-right: .5em;
+    }
+    .formEdit button:first-of-type{
+        width: 10%;
+        margin-right: .5em;
+        font-size: 15px;
+    }
+    .formEdit button:last-of-type{
+        width: 10px;
+        font-size: 15px;
+        
     }
     
 }

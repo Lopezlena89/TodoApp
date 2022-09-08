@@ -18,6 +18,9 @@ export const ListRode = ({newList, oncheck,eliminar,editarTexto}) => {
     setEditText("");
     setModoEdit(false)
   }
+  const cancelar = ()=>{
+    setEditText(newList.name)
+  }
   
     return (
      <> 
@@ -37,16 +40,16 @@ export const ListRode = ({newList, oncheck,eliminar,editarTexto}) => {
               </div>
               :
               <form className="formEdit" onSubmit={submitEdit}>
-                <input type="text" value={editText} onChange={manejarEdit} />
-                 <button>Guardar</button>
+                <input className="formEdit-input" type="text" value={editText} onChange={manejarEdit} />
+                <button className="first-button">Guardar</button>
+                <button onClick={cancelar} className="second-button">Cancelar</button>
               </form>
               
             }
 
             
             <div className="container-cambios">
-                <button onClick={editar}>
-                  Editar
+                <button onClick={editar} className="icon-edit">
                 </button>
                 <button onClick={()=>eliminar(newList.id)} >
                   <span className="icon-trash-2"></span>
