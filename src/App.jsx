@@ -6,6 +6,7 @@ export const App = () => {
 
     const [items, setItems] = useState([])
     const [counter, setCounter] = useState(0)
+    const [edit, setEdit] = useState('');
     
     //posible solucion
     let contador = 0;
@@ -13,54 +14,42 @@ export const App = () => {
     
     
     const onInput = (event)=>{
-      
-      
-      if(!items.find((ll)=>ll.name == event)){
-        if( event.trim().length > 1 ){
-
-          setCounter(counter+1)
-          if(!items.find((event)=>event.name===event)){
-          setItems([...items,{name:event,done:false,id:counter}]);
-          
-          }
-        }else{
-          alert('Debes de agregar mas de una letra')
-        }
+      if(event.length > 1){
+        const tmpItems = [...items];
+        setCounter(counter+1)
+  
+        tmpItems.push({
+          name:event,
+          done:false,
+          id:counter
+        })
+        setItems(tmpItems)
+      } else{
+        alert('debes ingresar la descripción')
       }
-      //pruebas
-     if( JSON.parse(localStorage.getItem('value'))[contador] == undefined ){
-      localStorage.setItem('contador',JSON.stringify(++contador));
-      console.log(contador);
       
-     }else{
-       const local = JSON.parse(localStorage.getItem('value'))[contador];
-       console.log(local)
-
-     }
-
-    
     }
 
-    const delate = (id)=>{
-     setItems([...items].filter(todo =>todo.id !== id))
-      
+    const delate = (index)=>{
+      const tmpItems = [...items];
+      tmpItems.splice(index, 1)
+      setItems(tmpItems)
     }
    
-    const tarea = (event)=>{
-      
-      setItems(
-        items.map(lista=>(lista.name == event.name )?{...lista, done: !lista.done}:lista )
-      )
+    const tarea = (index)=>{
+      const tmpItems = [...items];
+      tmpItems[index].done = !tmpItems[index].done;
+      setItems(tmpItems);
     }
 
-    const actualizarTarea = (id,event)=>{
-      
-      if(event.trim().length >1){
-        setItems(
-          items.map(lista=>(lista.id == id)?{...lista, name:event,done:false,id:id}:lista )
-       )
-      }else{
-       return
+    const actualizarTarea = (index,event)=>{
+      if(event.length > 1) {
+        const tmpItems = [...items];
+        tmpItems[index].name = event;
+        console.log(tmpItems)
+        setItems(tmpItems);
+      } else{
+        alert('debes ingresar la descripción')
       }
       
       
@@ -77,7 +66,6 @@ export const App = () => {
 
     useEffect(() => {
       localStorage.setItem('value',JSON.stringify(items))
-      
     }, [items])
     
     
@@ -89,8 +77,8 @@ export const App = () => {
         <Input newInput={onInput}/>
 
         {
-          items.map((list)=>(
-            <ListRode key={list.name} newList={list} oncheck={tarea} eliminar={delate} editarTexto={actualizarTarea}/>
+          items.map((list, index)=>(
+            <ListRode index={index} key={list.name} newList={list} oncheck={tarea} eliminar={delate} editarTexto={actualizarTarea}/>
         
           ))
           

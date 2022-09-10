@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { useState } from "react"
 
-export const ListRode = ({newList, oncheck,eliminar,editarTexto}) => {
+export const ListRode = ({newList, oncheck,eliminar,editarTexto, index}) => {
   const [modoEdit, setModoEdit] = useState(false)
   const [editText,setEditText] = useState("");
+
+  useEffect(()=> {
+    setEditText(newList.name)
+  }, [])
 
   const editar = ()=>{
     setModoEdit(true);
@@ -12,14 +17,15 @@ export const ListRode = ({newList, oncheck,eliminar,editarTexto}) => {
     setEditText(target.value);
   }
   
-  const submitEdit = (event)=>{
+  const submitEdit = (index, event)=>{
     event.preventDefault();
-    editarTexto(newList.id,editText);
-    setEditText("");
+    console.log({index, editText})
+    editarTexto(index,editText);
     setModoEdit(false)
   }
   const cancelar = ()=>{
     setEditText(newList.name)
+    setModoEdit(false)
   }
   
     return (
@@ -32,14 +38,14 @@ export const ListRode = ({newList, oncheck,eliminar,editarTexto}) => {
                 <input className="checkbox" 
                 type="checkbox" 
                 checked={newList.done}
-                onChange={()=>{oncheck(newList)}}
+                onChange={()=>{oncheck(index)}}
                 />
                 <div className="elemento">
                   {newList.name}
                 </div>
               </div>
               :
-              <form className="formEdit" onSubmit={submitEdit}>
+              <form className="formEdit" onSubmit={(e)=>submitEdit(index, e)}>
                 <input className="formEdit-input" type="text" value={editText} onChange={manejarEdit} />
                 <button className="first-button">Guardar</button>
                 <button onClick={cancelar} className="second-button">Cancelar</button>
@@ -51,7 +57,7 @@ export const ListRode = ({newList, oncheck,eliminar,editarTexto}) => {
             <div className="container-cambios">
                 <button onClick={editar} className="icon-edit">
                 </button>
-                <button onClick={()=>eliminar(newList.id)} >
+                <button onClick={()=>eliminar(index)} >
                   <span className="icon-trash-2"></span>
                 </button>
             </div>
