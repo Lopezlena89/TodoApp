@@ -6,12 +6,39 @@ export const App = () => {
 
     const [items, setItems] = useState([])
     const [counter, setCounter] = useState(0)
-
+    
+    //posible solucion
+    let contador = 0;
+    localStorage.setItem('contador',JSON.stringify(contador));
+    
+    
     const onInput = (event)=>{
-      setCounter(counter+1)
-      if(!items.find((event)=>event.name===event)){
-        setItems([...items,{name:event,done:false,id:counter}]);
+      
+      
+      if(!items.find((ll)=>ll.name == event)){
+        if( event.trim().length > 1 ){
+
+          setCounter(counter+1)
+          if(!items.find((event)=>event.name===event)){
+          setItems([...items,{name:event,done:false,id:counter}]);
+          
+          }
+        }else{
+          alert('Debes de agregar mas de una letra')
+        }
       }
+      //pruebas
+     if( JSON.parse(localStorage.getItem('value'))[contador] == undefined ){
+      localStorage.setItem('contador',JSON.stringify(++contador));
+      console.log(contador);
+      
+     }else{
+       const local = JSON.parse(localStorage.getItem('value'))[contador];
+       console.log(local)
+
+     }
+
+    
     }
 
     const delate = (id)=>{
@@ -27,9 +54,14 @@ export const App = () => {
     }
 
     const actualizarTarea = (id,event)=>{
-      setItems(
-        items.map(lista=>(lista.id == id)?{...lista, name:event,done:false,id:id}:lista )
-      )
+      
+      if(event.trim().length >1){
+        setItems(
+          items.map(lista=>(lista.id == id)?{...lista, name:event,done:false,id:id}:lista )
+       )
+      }else{
+       return
+      }
       
       
     }
